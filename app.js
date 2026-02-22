@@ -11,8 +11,58 @@ const tileLayer = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.pn
   attribution: "&copy; OpenStreetMap",
 }).addTo(map);
 
+// Layer group for multicab markers (so we can clear them in demo mode)
+const multicabLayer = L.layerGroup().addTo(map);
+
+// Store last location so we can re-add markers when exiting demo mode
+let lastMapCenter = { lat: 9.7393, lng: 118.735 };
+
+// Demo mode: show night / no cabs (5-tap on "Multicabs near you" to toggle)
+let demoMode = false;
+
+function updateActiveCabsList(cabs) {
+  if (!activeCabsList) return;
+  activeCabsList.innerHTML = "";
+  if (!cabs || cabs.length === 0) {
+    const empty = document.createElement("span");
+    empty.className = "active-cabs-empty";
+    empty.textContent = "No active cabs";
+    activeCabsList.appendChild(empty);
+    if (activeCabsBar) activeCabsBar.classList.add("empty");
+    return;
+  }
+  if (activeCabsBar) activeCabsBar.classList.remove("empty");
+  const count = cabs.length;
+  const item = document.createElement("div");
+  item.className = "active-route-item";
+  item.innerHTML = `
+    <span class="active-route-cab-logo" aria-hidden="true">🚐</span>
+    <span class="active-route-title">${count} cab${count !== 1 ? "s" : ""} available</span>
+  `;
+  activeCabsList.appendChild(item);
+}
+
+function setDemoMode(on) {
+  demoMode = on;
+  if (on) {
+    updateActiveCabsList([]);
+    multicabLayer.clearLayers();
+    if (emptyChip) emptyChip.classList.add("visible");
+    if (emptyChipText) emptyChipText.textContent = "No multicabs at this hour.";
+    showToast("Demo: night view (no cabs). Click the button again to exit.", 4000);
+    if (demoButton) demoButton.classList.add("demo-active");
+    if (demoButtonText) demoButtonText.textContent = "Exit demo";
+  } else {
+    addMulticabMarkers(lastMapCenter.lat, lastMapCenter.lng);
+    showToast("Demo off. Showing multicabs again.", 2500);
+    if (demoButton) demoButton.classList.remove("demo-active");
+    if (demoButtonText) demoButtonText.textContent = "Demo: night view";
+  }
+}
+
 // UI elements
 const locationChipText = document.getElementById("locationChipText");
+const emptyChipText = document.getElementById("emptyChipText");
 const banner = document.getElementById("banner");
 const toast = document.getElementById("toast");
 const toastMessage = document.getElementById("toastMessage");
@@ -20,6 +70,10 @@ const howButton = document.getElementById("howButton");
 const sheetBackdrop = document.getElementById("sheetBackdrop");
 const sheetClose = document.getElementById("sheetClose");
 const emptyChip = document.getElementById("emptyChip");
+const activeCabsBar = document.getElementById("activeCabsBar");
+const activeCabsList = document.getElementById("activeCabsList");
+const demoButton = document.getElementById("demoButton");
+const demoButtonText = document.getElementById("demoButtonText");
 const splash = document.getElementById("splash");
 const panelToggle = document.getElementById("panelToggle");
 const topPanel = document.querySelector(".top-panel");
@@ -269,10 +323,21 @@ function addMulticabMarkers(lat, lng) {
     }) : generateMockMulticabs(lat, lng);
 
   const multicabs = source;
+  lastMapCenter = { lat, lng };
+
+  // Clear previous multicab markers (e.g. when exiting demo mode)
+  multicabLayer.clearLayers();
 
   if (emptyChip) {
     if (!multicabs || multicabs.length === 0) {
       emptyChip.classList.add("visible");
+      if (emptyChipText) {
+        const hour = new Date().getHours();
+        const isNight = hour >= 20 || hour < 5;
+        emptyChipText.textContent = isNight
+          ? "No multicabs at this hour."
+          : "No active multicabs on Rizal / Malvar right now.";
+      }
     } else {
       emptyChip.classList.remove("visible");
     }
@@ -348,7 +413,7 @@ function addMulticabMarkers(lat, lng) {
       iconAnchor: [14, 24],
     });
 
-    const marker = L.marker([cab.lat, cab.lng], { icon }).addTo(map);
+    const marker = L.marker([cab.lat, cab.lng], { icon }).addTo(multicabLayer);
 
     const directionText = getDirectionText(cab);
 
@@ -369,6 +434,8 @@ function addMulticabMarkers(lat, lng) {
 
     marker.bindPopup(popupHtml);
   });
+
+  updateActiveCabsList(multicabs);
 }
 
 function fallbackLocation() {
@@ -387,6 +454,9 @@ function fallbackLocation() {
 
 // Initialize geolocation flow
 function init() {
+  // Show active cabs bar immediately (so it’s visible before location loads)
+  updateActiveCabsList([]);
+
   if (!navigator.geolocation) {
     fallbackLocation();
     return;
@@ -436,6 +506,28 @@ function init() {
       sheetBackdrop.classList.remove("open");
     }
   });
+
+  // Demo button (below "How it works") toggles night / no cabs view
+  if (demoButton) {
+    demoButton.addEventListener("click", () => setDemoMode(!demoMode));
+  }
+
+  // 5-tap on "Multicabs near you" also toggles demo mode (hidden shortcut)
+  const demoTrigger = document.getElementById("demoTrigger");
+  if (demoTrigger) {
+    let tapCount = 0;
+    let tapTimer = null;
+    demoTrigger.addEventListener("click", () => {
+      tapCount += 1;
+      if (tapTimer) clearTimeout(tapTimer);
+      tapTimer = setTimeout(() => { tapCount = 0; }, 800);
+      if (tapCount >= 5) {
+        tapCount = 0;
+        if (tapTimer) clearTimeout(tapTimer);
+        setDemoMode(!demoMode);
+      }
+    });
+  }
 
   // Collapse / expand top panel
   if (panelToggle && topPanel) {

@@ -26,7 +26,9 @@
           src="https://fixed-red-kr5pyxfgqj.edgeone.app/9a05b70c-a4ea-488e-865f-718f571051df__1_-removebg-preview.png"
           alt="PPC-Para! logo"
           class="splash-logo"
+          onerror="this.style.display='none'; document.getElementById('splash-logo-fallback').style.display='block';"
         />
+        <div id="splash-logo-fallback" class="splash-logo-fallback" style="display: none;" aria-hidden="true">PPC-PARA!</div>
         <div class="splash-title"><span class="splash-title-green">PPC -</span><span class="splash-title-light"> PARA!</span></div>
         <div class="splash-subtitle">Live multicab view for Rizal &amp; Malvar routes</div>
       </div>
@@ -35,13 +37,13 @@
     <div id="map"></div>
     <div class="empty-chip" id="emptyChip">
       <span>⚠️</span>
-      <span>No active multicabs on Rizal / Malvar right now.</span>
+      <span id="emptyChipText">No active multicabs on Rizal / Malvar right now.</span>
     </div>
 
     <div class="top-panel">
       <div class="top-card">
         <div class="top-title-row">
-          <div class="title-group">
+          <div class="title-group" id="demoTrigger" title="Tap 5 times to toggle demo (night / no cabs)">
             <div class="title">
               Multicabs near you
               <span class="title-badge">LIVE VIEW</span>
@@ -78,6 +80,10 @@
         <span>❓</span>
         <span>How it works</span>
       </button>
+      <button class="demo-button" id="demoButton" type="button" title="Show night view with no multicabs (for demo)">
+        <span>🌙</span>
+        <span id="demoButtonText">Demo: night view</span>
+      </button>
     </div>
 
     <div class="banner" id="banner">
@@ -88,6 +94,13 @@
     <div class="toast" id="toast">
       <span class="toast-indicator"></span>
       <span id="toastMessage">We’ll use a default location if GPS is blocked.</span>
+    </div>
+
+    <div class="active-cabs-bar" id="activeCabsBar">
+      <span class="active-cabs-label">Active cabs</span>
+      <div class="active-cabs-list" id="activeCabsList" aria-label="List of active multicabs">
+        <!-- Filled by app.js -->
+      </div>
     </div>
 
     <div class="sheet-backdrop" id="sheetBackdrop">
