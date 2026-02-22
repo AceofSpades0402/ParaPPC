@@ -358,7 +358,7 @@ function addMulticabMarkers(lat, lng) {
         <div class="popup-meta"><strong>Driver:</strong> ${cab.driverName}</div>
         <div class="popup-meta"><strong>Plate no.:</strong> ${cab.plateNumber}</div>
         <div class="popup-meta"><strong>Route ${cab.routeNumber}:</strong> ${cab.routeName}</div>
-        <div class="popup-meta"><strong>Direksyon:</strong> ${directionText}</div>
+        <div class="popup-meta"><strong>Direction:</strong> ${directionText}</div>
         <div class="popup-meta">${cab.seats}</div>
         <div class="popup-pill">
           <span class="popup-pill-dot ${cab.status}"></span>

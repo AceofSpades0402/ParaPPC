@@ -12,56 +12,92 @@
   <div class="page">
     <header class="nav">
       <div class="nav-left">
-        <span class="nav-logo">PPC<span>‑Para!</span></span>
-        <span class="nav-tagline">Smart multicab guide for Puerto Princesa</span>
+        <a href="./landing.html" class="nav-logo">
+          <img
+            src="https://fixed-red-kr5pyxfgqj.edgeone.app/9a05b70c-a4ea-488e-865f-718f571051df__1_-removebg-preview.png"
+            alt="PPC‑Para! logo"
+            class="nav-logo-img"
+          />
+          <span class="nav-logo-text"><span class="nav-logo-green">PPC -</span><span class="nav-logo-light"> PARA!</span></span>
+        </a>
       </div>
       <div class="nav-right">
-        <nav class="nav-links">
-          <a href="#top">Home</a>
+        <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="nav-links" id="navLinks">
           <a href="#about">About</a>
-          <a href="#how-it-works">How it works</a>
           <a href="#how-to-use">How to use the app</a>
         </nav>
-        <a href="./index.html" class="nav-cta">Open live map</a>
       </div>
     </header>
 
+    <section class="hero-fullscreen" aria-label="PPC-Para! welcome">
+      <div class="hero-fullscreen-overlay"></div>
+      <div class="hero-fullscreen-inner">
+        <p class="hero-fullscreen-tagline">Smarter multicab commute in Puerto Princesa</p>
+        <h2 class="hero-fullscreen-title">PPC- PARA!</h2>
+        <a href="./index.html" class="hero-fullscreen-cta">Launch live map</a>
+      </div>
+    </section>
+
     <main class="main" id="top">
-      <section class="hero" id="about">
+      <section class="hero">
         <div class="hero-content">
-          <p class="eyebrow">Think you can beat the waiting game? 🚐📍</p>
-          <h1 class="hero-title">Track, check, and ride multicabs with confidence.</h1>
+          <h1 class="hero-title">Less Waiting. More Moving.</h1>
           <p class="hero-subtitle">
             PPC‑Para! is your smart companion for multicab commuting in Puerto Princesa –
             helping you see nearby rides and move on your own time.
           </p>
-
-          <div class="hero-actions">
-            <a href="./index.html" class="primary-cta">Launch live prototype</a>
-            <a href="#how-it-works" class="secondary-cta">How PPC‑Para! helps you</a>
-          </div>
-
-          <p class="disclaimer-inline">
-            ⚠️ <strong>Disclaimer:</strong> PPC‑Para! is an experimental concept built for educational
-            purposes only. It does not provide real-time transport operations or official city services.
-          </p>
-        </div>
-
-        <div class="hero-media">
-          <div class="hero-image-frame">
-            <img
-              src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t39.30808-6/633907702_122096091675272656_1512003487718035793_n.jpg?stp=dst-jpg_p526x296_tt6&_nc_cat=109&ccb=1-7&_nc_sid=7b2446&_nc_ohc=amBa7uequYgQ7kNvwG3q2K4&_nc_oc=AdnVjXwydsZgix5H9WXBRwhGCxokdb8oD0jlFeEiFVS9PzF57_iSZsdEqkg0opfIrMU&_nc_zt=23&_nc_ht=scontent.fmnl4-3.fna&_nc_gid=bUs-LZ56BDy-b8F7kFeVwg&oh=00_AfusCebH8VOaedRR69nYTs586FIKDSudQWjcquL5t_k3OQ&oe=699B9D2D"
-              alt="PPC‑Para! multicab tracking concept"
-            />
-          </div>
-          <div class="hero-pill">
-            <span class="dot live"></span>
-            <span>Sample view of multicabs near you</span>
-          </div>
+          <ul class="hero-features">
+            <li>See nearby multicabs on a map</li>
+            <li>Check seat availability at a glance</li>
+            <li>Built for Puerto Princesa commuters</li>
+          </ul>
         </div>
       </section>
 
-      <section id="how-it-works" class="section grid">
+      <section id="about" class="section">
+        <div class="section-block how-works-board">
+          <div class="how-works-main">
+            <div class="how-works-header">
+              <h2>About</h2>
+              <p>
+                This page is about <strong>PPC‑Para!</strong> – a smart companion for multicab commuting in Puerto Princesa.
+                You get a sample “game board” view of multicabs so you can quickly see where rides might be and how many seats are left.
+              </p>
+            </div>
+
+            <div class="cab-slider-wrap cab-slider-below" id="cabSlider">
+              <button type="button" class="cab-arrow cab-arrow-prev" aria-label="Previous image">‹</button>
+              <div class="cab-slider">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Multicab_in_Camiguin.jpg" alt="Multicab in Camiguin" class="cab-slide" />
+                <img src="https://thumbs.dreamstime.com/z/puerto-princesa-palawan-philippines-march-street-view-private-people-transport-red-white-bus-open-side-window-153138066.jpg" alt="Multicab in Puerto Princesa, Palawan" class="cab-slide" />
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhPBJuuLtTFNSM1MGqh64eSNUQHpV_aT5aKQlAwcVHH9iCAWJa6zFwtIGICygCE2OX1ke0FHD6BdHkEoXDxuJcpdOO9o7JQ3EOQXsxzCW4-JTjcqPZMCYahs6MQ9_0Z20wqbQAB9PIvMhE/s1600/multicabs.jpg" alt="Multicabs" class="cab-slide" />
+              </div>
+              <button type="button" class="cab-arrow cab-arrow-next" aria-label="Next image">›</button>
+            </div>
+          </div>
+
+          <aside class="how-works-side" aria-hidden="true">
+            <div class="how-works-character">
+              <img
+                src="https://scontent.fmnl8-4.fna.fbcdn.net/v/t39.30808-6/636402726_122105939253246122_5572097330759905826_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=13d280&_nc_ohc=-GlxesGdJykQ7kNvwFPhTn3&_nc_oc=Adlewnx1GjkCOitptemhBhYPfucm8Ic_4bmwZkk23JR6kvgKUnxzGVs6SQ0V-vMhCOQ&_nc_zt=23&_nc_ht=scontent.fmnl8-4.fna&_nc_gid=N8OtrN6Fs30h_dg1d1UHWA&oh=00_AftAygBl9Cjmmy2t21c_NUdpMBs_vnAP56V4qZOLMEYQYw&oe=699E4AD9"
+                alt="Sample PPC‑Para! app view"
+                class="how-works-screenshot"
+              />
+              <div class="how-works-badge">PPC‑Para!</div>
+              <p class="how-works-caption">
+                Think of it like a bonus screen for your daily commute – a playful preview of a smarter multicab guide.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section grid">
         <div class="section-block">
           <h2>Tired of the long wait?</h2>
           <p>
@@ -95,54 +131,151 @@
         </div>
       </section>
 
-      <section id="how-to-use" class="section grid">
+      <section id="how-to-use" class="section">
         <div class="section-block">
-          <h3>How to use the web app</h3>
+          <h2>How to use the web app</h2>
           <p>
-            1. Open the live map and allow location access.<br />
+            1. Open the live map prototype and allow location access so the view can center near you.<br />
             2. Look for multicab icons near you – colors show how many seats are left.<br />
-            3. Tap a multicab to see driver, plate number, route, direction, and capacity.<br />
+            3. Tap a multicab to see route label, sample capacity, and basic trip info.<br />
             4. Use the legend and the “How it works” panel inside the app for a quick refresher.
           </p>
         </div>
+      </section>
+
+      <section class="section">
         <div class="section-block">
           <h3>Best experience</h3>
           <p>
-            PPC‑Para! is designed mobile‑first. For the smoothest experience, open the web app on
-            your phone and add it to your home screen so it feels like a native transport app.
+            PPC‑Para! is designed mobile‑first. For the smoothest experience, open the web app on your phone and add
+            it to your home screen so it feels like a native transport app.
           </p>
         </div>
       </section>
 
-      <section class="section highlight">
-        <div class="section-block">
-          <h2>The result</h2>
-          <p>
-            Commuters don’t just get to their destination – they enjoy a smoother, smarter way of navigating the city.
-          </p>
-          <div class="hero-actions">
-            <a href="./index.html" class="primary-cta">Try the live map prototype</a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section disclaimer">
-        <p>
-          ⚠️ <strong>Disclaimer:</strong> PPC‑Para! is an experimental concept built for educational
-          purposes only. It does not provide live transport operations, real-time data, or official
-          public transport services.
-        </p>
-        <p class="hashtags">
-          #PPCPara #SmartCityPPC #CommuteSmart #PalawanInnovation
-        </p>
-      </section>
     </main>
 
     <footer class="footer">
-      <span>© 2026 PPC‑Para! · Educational prototype</span>
-      <a href="./index.html">Open app screen</a>
+      <div class="footer-connect">
+        <p class="footer-connect-text">Get connected with us on social networks:</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/profile.php?id=61588179691580&rdid=JAGtVR42zKGVmHd8&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F175XCh6tkv%2F%23" class="footer-social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Twitter">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Google">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="footer-social-icon" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-content">
+        <div class="footer-col footer-col-about">
+          <h6 class="footer-title">PPC-PARA!</h6>
+          <p class="footer-desc">Your smart companion for multicab commuting in Puerto Princesa. See nearby rides, check seat availability, and move on your own time.</p>
+        </div>
+        <div class="footer-col">
+          <h6 class="footer-title">App</h6>
+          <ul class="footer-list">
+            <li><a href="./index.html">Live map</a></li>
+            <li><a href="./landing.html">Landing page</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#how-to-use">How to use</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h6 class="footer-title">Useful links</h6>
+          <ul class="footer-list">
+            <li><a href="#about">About PPC-Para</a></li>
+            <li><a href="#how-to-use">How it works</a></li>
+            <li><a href="./index.html">Open app</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61588179691580" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h6 class="footer-title">Contact</h6>
+          <ul class="footer-list footer-contact">
+            <li><span class="footer-icon" aria-hidden="true">📍</span> Puerto Princesa, Palawan, Philippines</li>
+            <li><a href="mailto:parappc90@gmail.com"><span class="footer-icon" aria-hidden="true">✉</span> parappc90@gmail.com</a></li>
+            <li><a href="https://www.facebook.com/profile.php?id=61588179691580" target="_blank" rel="noopener noreferrer"><span class="footer-icon" aria-hidden="true">📘</span> Message us on Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <span>© 2026 PPC‑Para! · Educational prototype</span>
+      </div>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById("navToggle");
+      var links = document.getElementById("navLinks");
+      if (toggle && links) {
+        toggle.addEventListener("click", function () {
+          var open = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", !open);
+          toggle.setAttribute("aria-label", open ? "Open menu" : "Close menu");
+          links.classList.toggle("is-open", !open);
+        });
+        links.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open menu");
+            links.classList.remove("is-open");
+          });
+        });
+      }
+    })();
+  </script>
+  <script>
+    (function () {
+      var slideTime = 5;
+      var wrap = document.getElementById("cabSlider");
+      if (!wrap) return;
+      var track = wrap.querySelector(".cab-slider");
+      var prevBtn = wrap.querySelector(".cab-arrow-prev");
+      var nextBtn = wrap.querySelector(".cab-arrow-next");
+      var slides = wrap.querySelectorAll(".cab-slide");
+      var total = slides.length;
+      if (total === 0) return;
+
+      var index = 0;
+      function goTo(i) {
+        index = (i + total) % total;
+        track.style.transform = "translateX(-" + (index * (100 / total)) + "%)";
+      }
+      function next() {
+        goTo(index + 1);
+      }
+      function prev() {
+        goTo(index - 1);
+      }
+
+      prevBtn.addEventListener("click", prev);
+      nextBtn.addEventListener("click", next);
+
+      var timer = setInterval(next, slideTime * 1000);
+      wrap.addEventListener("mouseenter", function () {
+        clearInterval(timer);
+      });
+      wrap.addEventListener("mouseleave", function () {
+        timer = setInterval(next, slideTime * 1000);
+      });
+
+      goTo(0);
+    })();
+  </script>
 </body>
 </html>
 
